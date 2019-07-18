@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Input from "./Input";
 import LinkButton from "./LinkButton";
@@ -50,7 +51,9 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
     <Wrapper>
       <InnerWrapper>
         <LogoWrapper>
-          <Image src={require("../Images/logo.png")} />
+          <Link to={"/"}>
+            <Image src={require("../Images/logo.png")} />
+          </Link>
         </LogoWrapper>
         <InputWrapper>
           <Input

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { gql } from "apollo-boost";
 import { HashRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Theme from "./Styles/Theme";
@@ -8,12 +7,7 @@ import GlobalStyles from "./Styles/GlobalStyles";
 import AppRouter from "./Components/AppRouter";
 import { useQuery } from "react-apollo-hooks";
 import Header from "./Components/Header";
-
-const QUERY = gql`
-  {
-    isLoggedIn @client
-  }
-`;
+import { IS_LOGGEDIN } from "./Queries";
 
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -22,7 +16,7 @@ const AppWrapper = styled.div`
 `;
 
 const App: React.SFC = () => {
-  const { data } = useQuery(QUERY);
+  const { data } = useQuery(IS_LOGGEDIN);
   return (
     <ThemeProvider theme={Theme}>
       <>
