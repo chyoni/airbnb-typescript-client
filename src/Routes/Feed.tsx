@@ -1,7 +1,8 @@
 import React from "react";
+import Loader from "src/Components/Loader";
 
 const Feed: React.SFC = () => {
-  return <div>Feed</div>;
+  return <Loader />;
 };
 
 export default Feed;

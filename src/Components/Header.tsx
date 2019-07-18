@@ -60,11 +60,13 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
             placeholder={"🔍 검색"}
           />
         </InputWrapper>
-        <MetaWrapper>
-          <LinkButton text={"호스트가 되어보세요"} />
-          <LinkButton text={"회원가입"} />
-          {isLoggedIn ? null : <LinkButton text={"로그인"} />}
-        </MetaWrapper>
+        {isLoggedIn ? null : (
+          <MetaWrapper>
+            <LinkButton text={"호스트가 되어보세요"} />
+            <LinkButton text={"회원가입"} />
+            <LinkButton text={"로그인"} />
+          </MetaWrapper>
+        )}
       </InnerWrapper>
     </Wrapper>
   );

@@ -8,21 +8,10 @@ interface IProps {
 }
 
 const AppRouter: React.SFC<IProps> = ({ isLoggedIn }) => {
-  return isLoggedIn ? <LoggedInRoutes /> : <LoggedOutRoutes />;
-};
-
-const LoggedInRoutes: React.SFC = () => {
   return (
     <Switch>
       <Route exact={true} path={"/"} component={Feed} />
-    </Switch>
-  );
-};
-
-const LoggedOutRoutes: React.SFC = () => {
-  return (
-    <Switch>
-      <Route exact={true} path={"/"} component={Auth} />
+      <Route exact={true} path={"/auth"} component={Auth} />
     </Switch>
   );
 };
