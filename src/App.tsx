@@ -1,9 +1,16 @@
 import React from "react";
+import { ThemeProvider } from "styled-components";
+import Theme from "./Styles/Theme";
+import GlobalStyles from "./Styles/GlobalStyles";
 
-class App extends React.Component {
-  public render() {
-    return <div className="App">gg</div>;
-  }
-}
+const App = () => {
+  return (
+    <ThemeProvider theme={Theme}>
+      <>
+        <GlobalStyles />
+      </>
+    </ThemeProvider>
+  );
+};
 
 export default App;
