@@ -17,6 +17,7 @@ export default createGlobalStyle`
     }
     a {
         text-decoration:none;
+        color:${Theme.blackColor};
     }
     input {
         outline:none;

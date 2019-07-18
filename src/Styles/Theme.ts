@@ -1,6 +1,6 @@
 export default {
   bgColor: "#FFFFFF",
-  maxWidth: "1520px",
+  maxWidth: "1540px",
   borderRadius: "4px",
   titleColor: "#484848",
   greenColor: "#008489",
