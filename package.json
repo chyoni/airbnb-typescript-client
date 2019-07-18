@@ -8,6 +8,7 @@
     "react": "^16.8.6",
     "react-apollo-hooks": "^0.5.0",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts-ts": "3.1.0",
     "styled-components": "^4.3.2",
     "styled-reset": "^3.0.0"
@@ -19,10 +20,12 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/graphql": "^14.2.2",
     "@types/jest": "^24.0.15",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.4",
     "typescript": "^3.5.3"
   }
 }
