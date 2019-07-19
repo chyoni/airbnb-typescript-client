@@ -6,6 +6,7 @@ export default createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
     ${reset};
     * {
         box-sizing: border-box;

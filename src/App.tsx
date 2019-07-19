@@ -7,11 +7,15 @@ import GlobalStyles from "./Styles/GlobalStyles";
 import AppRouter from "./Components/AppRouter";
 import { useQuery } from "react-apollo-hooks";
 import Header from "./Components/Header";
-import { IS_LOGGEDIN } from "./Queries";
+import { IS_LOGGEDIN } from "./LocalQueries";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const AppWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
+  height: 100%;
+  min-height: 100vh;
   max-width: ${props => props.theme.maxWidth};
 `;
 
@@ -25,6 +29,11 @@ const App: React.SFC = () => {
           <Header isLoggedIn={data.isLoggedIn} />
           <AppWrapper>
             <AppRouter isLoggedIn={data.isLoggedIn} />
+            <ToastContainer
+              position={toast.POSITION.BOTTOM_CENTER}
+              draggable={true}
+              autoClose={2500}
+            />
           </AppWrapper>
         </Router>
       </>

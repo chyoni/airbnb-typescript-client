@@ -1,8 +1,9 @@
 import React from "react";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import { useQuery } from "react-apollo-hooks";
-import { IS_LOGGEDIN, SEE_POST_LOGIN, SEE_POST_LOGOUT } from "src/Queries";
+import { SEE_POST_LOGIN, SEE_POST_LOGOUT } from "src/Queries.queries";
 import Loader from "src/Components/Loader";
+import { IS_LOGGEDIN } from "src/LocalQueries";
 
 interface IMatchParams {
   postId: string;

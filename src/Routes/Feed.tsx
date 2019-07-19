@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { gql } from "apollo-boost";
 import styled from "styled-components";
 import Loader from "src/Components/Loader";
 import { useQuery } from "react-apollo-hooks";
 import { Heart } from "src/Components/Icons";
+import { SEE_FEED } from "src/Queries.queries";
 
 const Container = styled.div`
   margin: 0 auto;
@@ -73,19 +73,6 @@ const LikeCount = styled.span`
   font-size: 12px;
   margin-left: 4px;
   color: ${props => props.theme.greyColor};
-`;
-
-const SEE_FEED = gql`
-  query seeFeed {
-    seeFeed {
-      id
-      thumbNail
-      caption
-      location
-      likeCount
-      commentCount
-    }
-  }
 `;
 
 const Feed: React.SFC = () => {

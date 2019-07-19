@@ -6,6 +6,7 @@ export default {
   greenColor: "#008489",
   greyColor: "#767676",
   blackColor: "#000000",
+  redColor: "#FF5A5F",
   whiteColor: "#FFFFFF",
   lightGreyColor: "#c7c7c7",
   boxBorder: "1px solid #e6e6e6",

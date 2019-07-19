@@ -47,32 +47,34 @@ interface IProps {
 }
 const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
   const search = useInput("");
-  return (
-    <Wrapper>
-      <InnerWrapper>
-        <LogoWrapper>
-          <Link to={"/"}>
-            <Image src={require("../Images/logo.png")} />
-          </Link>
-        </LogoWrapper>
-        <InputWrapper>
-          <Input
-            width={"500px"}
-            value={search.valueState}
-            onChange={search.onChange}
-            placeholder={"🔍 검색"}
-          />
-        </InputWrapper>
-        {isLoggedIn ? null : (
+  if (isLoggedIn) {
+    return (
+      <Wrapper>
+        <InnerWrapper>
+          <LogoWrapper>
+            <Link to={"/"}>
+              <Image src={require("../Images/logo.png")} />
+            </Link>
+          </LogoWrapper>
+          <InputWrapper>
+            <Input
+              width={"500px"}
+              value={search.valueState}
+              onChange={search.onChange}
+              placeholder={"🔍 검색"}
+            />
+          </InputWrapper>
           <MetaWrapper>
             <LinkButton text={"호스트가 되어보세요"} />
             <LinkButton text={"회원가입"} />
             <LinkButton text={"로그인"} />
           </MetaWrapper>
-        )}
-      </InnerWrapper>
-    </Wrapper>
-  );
+        </InnerWrapper>
+      </Wrapper>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Header;

@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo": "^2.16.0",
     "apollo-boost": "^0.4.3",
     "graphql": "^14.4.2",
     "react": "^16.8.6",
     "react-apollo-hooks": "^0.5.0",
     "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
     "react-router-dom": "^5.0.1",
     "react-scripts-ts": "3.1.0",
+    "react-toastify": "^5.3.2",
     "styled-components": "^4.3.2",
     "styled-reset": "^3.0.0"
   },
@@ -17,7 +20,9 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "precodegen": "apollo schema:download --endpoint=http://localhost:4300/graphql",
+    "codegen": "apollo codegen:generate src/types/api.d.ts --queries=src/**/*.queries.ts --addTypename --localSchemaFile=schema.json --target typescript --outputFlat"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.2",
