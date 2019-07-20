@@ -20,6 +20,9 @@ const Wrapper = styled.div`
 const InnerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 910px) {
+    justify-content: center;
+  }
   align-items: center;
   max-width: ${props => props.theme.maxWidth};
   width: 100%;
@@ -39,10 +42,17 @@ const Image = styled.img`
   height: 40px;
 `;
 
-const InputWrapper = styled.div``;
+const InputWrapper = styled.div`
+  @media (max-width: 910px) {
+    display: none;
+  }
+`;
 const MetaWrapper = styled.div`
   display: flex;
   height: 80px;
+  @media (max-width: 910px) {
+    display: none;
+  }
 `;
 
 interface IProps {
@@ -66,7 +76,7 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
               width={"500px"}
               value={search.valueState}
               onChange={search.onChange}
-              placeholder={"🔍 검색"}
+              placeholder={"검색"}
             />
           </InputWrapper>
           <MetaWrapper>

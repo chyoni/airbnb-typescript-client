@@ -22,11 +22,14 @@ const Container = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  @media (min-width: 1279px) {
+  @media (min-width: 1530px) {
     grid-template-columns: repeat(4, 1fr);
   }
-  @media (max-width: 1278px) {
+  @media (min-width: 766px) and (max-width: 1529px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 765px) {
+    grid-template-columns: repeat(1, 1fr);
   }
   grid-template-rows: 340px;
   grid-gap: 20px;

@@ -9,6 +9,7 @@ export default {
   redColor: "#FF5A5F",
   whiteColor: "#FFFFFF",
   lightGreyColor: "#c7c7c7",
+  superLightGreyColor: "#e6e6e6",
   boxBorder: "1px solid #e6e6e6",
   bigFontSize: "24px",
   midFontSize: "18px",

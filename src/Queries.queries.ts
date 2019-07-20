@@ -50,46 +50,7 @@ export const CONFIRM_SECRET = gql`
   }
 `;
 
-export const SEE_POST_LOGOUT = gql`
-  query seeFullPost($postId: String!) {
-    seeFullPost(postId: $postId) {
-      ok
-      error
-      post {
-        id
-        thumbNail
-        caption
-        location
-        host {
-          id
-          avatar
-          username
-        }
-        likeCount
-        commentCount
-        comments {
-          id
-          text
-          user {
-            id
-            username
-            avatar
-          }
-          createdDate
-          createdTime
-        }
-        maxPeopleCount
-        checkIn
-        checkOut
-        price
-        createdDate
-        createdTime
-      }
-    }
-  }
-`;
-
-export const SEE_POST_LOGIN = gql`
+export const SEE_POST = gql`
   query seeFullPost($postId: String!) {
     seeFullPost(postId: $postId) {
       ok

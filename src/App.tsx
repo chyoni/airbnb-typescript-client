@@ -10,12 +10,13 @@ import Header from "./Components/Header";
 import { IS_LOGGEDIN } from "./LocalQueries";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
+import Footer from "./Components/Footer";
 
 const AppWrapper = styled.div`
   margin: 0 auto;
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   max-width: ${props => props.theme.maxWidth};
 `;
 
@@ -35,6 +36,7 @@ const App: React.SFC = () => {
               autoClose={2500}
             />
           </AppWrapper>
+          <Footer />
         </Router>
       </>
     </ThemeProvider>
