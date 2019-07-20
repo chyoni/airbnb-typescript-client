@@ -70,8 +70,21 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
             />
           </InputWrapper>
           <MetaWrapper>
-            <LinkButton text={"호스트가 되어보세요"} />
-            <LinkButton text={"회원가입"} />
+            <Link to={"/hosting"}>
+              <LinkButton text={"호스트가 되어보세요"} />
+            </Link>
+            {loading ? (
+              <LinkButton text={"여행 목록"} />
+            ) : (
+              !loading &&
+              data &&
+              data.myProfile &&
+              data.myProfile.username && (
+                <Link to={`/reservation/${data.myProfile.username}`}>
+                  <LinkButton text={"여행 목록"} />
+                </Link>
+              )
+            )}
             {loading ? (
               <LinkButton text={"내 프로필"} />
             ) : (

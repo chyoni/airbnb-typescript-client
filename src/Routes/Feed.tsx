@@ -36,7 +36,7 @@ const Post = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  width: 375px;
+  width: 360px;
   min-height: 340px;
   margin-bottom: 10px;
 `;
@@ -52,14 +52,14 @@ const HostingPic = styled<any>("div")`
 
 const HostingMeta = styled.div`
   margin-top: 10px;
-  width: 375px;
+  width: 360px;
 `;
 
 const Caption = styled.span`
   display: block;
   font-size: 17px;
   font-weight: 600;
-  max-width: 375px;
+  max-width: 360px;
 `;
 
 const Location = styled.span`
@@ -68,13 +68,13 @@ const Location = styled.span`
   font-weight: 500;
   color: ${props => props.theme.greyColor};
   margin-bottom: 9px;
-  max-width: 375px;
+  max-width: 360px;
 `;
 const LikeColumn = styled.div`
   display: flex;
   align-items: center;
   margin-top: 7px;
-  max-width: 375px;
+  max-width: 360px;
   svg {
     width: 8px;
     height: 8px;

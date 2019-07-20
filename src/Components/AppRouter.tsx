@@ -3,6 +3,9 @@ import { Route, Switch } from "react-router-dom";
 import Feed from "src/Routes/Feed";
 import Auth from "src/Routes/Auth";
 import Detail from "src/Routes/Detail";
+import Profile from "src/Routes/Profile";
+import ReservationList from "src/Routes/ReservationList";
+import Hosting from "src/Routes/Hosting";
 
 interface IProps {
   isLoggedIn: boolean;
@@ -17,6 +20,13 @@ const LoggedInRoutes: React.SFC<any> = () => {
     <Switch>
       <Route exact={true} path={"/"} component={Feed} />
       <Route exact={true} path={"/detail/:postId"} component={Detail} />
+      <Route exact={true} path={"/user/:username"} component={Profile} />
+      <Route exact={true} path={"/hosting"} component={Hosting} />
+      <Route
+        exact={true}
+        path={"/reservation/:username"}
+        component={ReservationList}
+      />
     </Switch>
   );
 };
