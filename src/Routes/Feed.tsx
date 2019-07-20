@@ -8,14 +8,26 @@ import { SEE_FEED } from "src/Queries.queries";
 
 const Container = styled.div`
   margin: 0 auto;
-  max-width: 1540px;
   margin-top: 50px;
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 1279px) {
+    max-width: ${props => props.theme.maxWidth};
+  }
+  @media (max-width: 1278px) {
+    max-width: 900px;
+  }
 `;
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  @media (min-width: 1279px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 1278px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
   grid-template-rows: 340px;
   grid-gap: 20px;
 `;

@@ -129,3 +129,66 @@ export const SEE_POST_LOGIN = gql`
     }
   }
 `;
+
+export const MY_PROFILE = gql`
+  query myProfile {
+    myProfile {
+      id
+      username
+      avatar
+      firstName
+      lastName
+      fullName
+      hostings {
+        id
+        thumbNail
+        caption
+        location
+        likes {
+          id
+          user {
+            id
+            username
+            avatar
+            fullName
+          }
+        }
+        comments {
+          id
+          text
+          user {
+            id
+            username
+            avatar
+            fullName
+            createdDate
+            createdTime
+          }
+        }
+        isLiked
+        likeCount
+        commentCount
+        maxPeopleCount
+        checkIn
+        checkOut
+        price
+        createdDate
+        createdTime
+      }
+      reservations {
+        id
+        post {
+          id
+          thumbNail
+          caption
+          location
+        }
+        guestCount
+        arriveAt
+        leaveAt
+        createdDate
+        createdTime
+      }
+    }
+  }
+`;

@@ -4,6 +4,9 @@ import styled from "styled-components";
 import Input from "./Input";
 import LinkButton from "./LinkButton";
 import useInput from "src/Hooks/useInput";
+import { useQuery } from "react-apollo-hooks";
+import { MY_PROFILE } from "src/Queries.queries";
+import { myProfile } from "src/types/api";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -46,6 +49,8 @@ interface IProps {
   isLoggedIn: boolean;
 }
 const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
+  const { data, loading } = useQuery<myProfile, null>(MY_PROFILE);
+  console.log(data);
   const search = useInput("");
   if (isLoggedIn) {
     return (
@@ -67,7 +72,18 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
           <MetaWrapper>
             <LinkButton text={"호스트가 되어보세요"} />
             <LinkButton text={"회원가입"} />
-            <LinkButton text={"로그인"} />
+            {loading ? (
+              <LinkButton text={"내 프로필"} />
+            ) : (
+              !loading &&
+              data &&
+              data.myProfile &&
+              data.myProfile.username && (
+                <Link to={`/user/${data.myProfile.username}`}>
+                  <LinkButton text={"내 프로필"} />
+                </Link>
+              )
+            )}
           </MetaWrapper>
         </InnerWrapper>
       </Wrapper>
