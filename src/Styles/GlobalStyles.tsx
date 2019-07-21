@@ -8,6 +8,8 @@ export default createGlobalStyle`
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
     @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Sunflower:300&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap');
     ${reset};
     * {
         box-sizing: border-box;

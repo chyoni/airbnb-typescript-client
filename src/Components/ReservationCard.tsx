@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Theme from "src/Styles/Theme";
 import { Link } from "react-router-dom";
@@ -7,6 +7,7 @@ import { useMutation } from "react-apollo-hooks";
 import { cancelReservation, cancelReservationVariables } from "src/types/api";
 import { CANCEL_RESERVE } from "src/Queries.queries";
 import { toast } from "react-toastify";
+import ReviewPopUp from "./ReviewPopup";
 
 const ReservationBox = styled.div`
   display: flex;
@@ -89,6 +90,7 @@ const ReservationCard: React.SFC<IProps> = ({
   guestCount,
   username
 }) => {
+  const [reviewOpen, setReviewOpen] = useState(false);
   const cancelReserveMutation = useMutation<
     cancelReservation,
     cancelReservationVariables
@@ -114,6 +116,13 @@ const ReservationCard: React.SFC<IProps> = ({
       }
     } else {
       toast.error("잠시 후 다시시도해주세요 😥");
+    }
+  };
+  const toggleReview = () => {
+    if (reviewOpen) {
+      setReviewOpen(false);
+    } else {
+      setReviewOpen(true);
     }
   };
   return (
@@ -157,12 +166,13 @@ const ReservationCard: React.SFC<IProps> = ({
         ) : (
           <Button
             text={"후기 작성"}
-            onClick={handleCancel}
+            onClick={toggleReview}
             width={"100px"}
             color={Theme.greenColor}
           />
         )}
       </ReserveInfo>
+      {reviewOpen && <ReviewPopUp postId={postId} closePopUp={toggleReview} />}
     </ReservationBox>
   );
 };

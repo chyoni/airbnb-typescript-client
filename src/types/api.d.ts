@@ -314,6 +314,51 @@ export interface cancelReservationVariables {
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL mutation operation: toggleLike
+// ====================================================
+
+export interface toggleLike_toggleLike {
+  __typename: "ToggleLikeResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface toggleLike {
+  toggleLike: toggleLike_toggleLike;
+}
+
+export interface toggleLikeVariables {
+  postId: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: addComment
+// ====================================================
+
+export interface addComment_addComment {
+  __typename: "AddCommentResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface addComment {
+  addComment: addComment_addComment;
+}
+
+export interface addCommentVariables {
+  postId: string;
+  text: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================
