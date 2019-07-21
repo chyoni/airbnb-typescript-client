@@ -40,6 +40,7 @@ const ReservationList: React.SFC = () => {
                 thumbNail={reserve.post.thumbNail}
                 caption={reserve.post.caption}
                 location={reserve.post.location}
+                isCommented={reserve.post.isCommented}
                 arriveAt={reserve.arriveAt}
                 leaveAt={reserve.leaveAt}
                 createdDate={reserve.createdDate}

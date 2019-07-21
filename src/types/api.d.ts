@@ -126,6 +126,7 @@ export interface seeFullPost_seeFullPost_post_comments {
 export interface seeFullPost_seeFullPost_post {
   __typename: "Post";
   id: string;
+  isCommented: boolean;
   thumbNail: string;
   caption: string;
   location: string;
@@ -218,6 +219,7 @@ export interface myProfile_myProfile_hostings {
 export interface myProfile_myProfile_reservations_post {
   __typename: "Post";
   id: string;
+  isCommented: boolean;
   thumbNail: string;
   caption: string;
   location: string;

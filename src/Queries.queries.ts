@@ -57,6 +57,7 @@ export const SEE_POST = gql`
       error
       post {
         id
+        isCommented
         thumbNail
         caption
         location
@@ -140,6 +141,7 @@ export const MY_PROFILE = gql`
         id
         post {
           id
+          isCommented
           thumbNail
           caption
           location

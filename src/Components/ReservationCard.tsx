@@ -62,6 +62,17 @@ const ThankCard = styled.span`
   font-weight: 600;
   margin-top: 50px;
 `;
+const ReviewComplete = styled.div`
+  width: 150px;
+  padding: 10px;
+  margin-top: 35px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${Theme.blackColor};
+  border-radius: 6px;
+  color: white;
+`;
 
 interface IProps {
   reserveId: string;
@@ -71,6 +82,7 @@ interface IProps {
   location: string;
   arriveAt: string;
   leaveAt: string;
+  isCommented: boolean;
   createdDate: string | null;
   createdTime: string | null;
   guestCount: number;
@@ -88,7 +100,8 @@ const ReservationCard: React.SFC<IProps> = ({
   createdDate,
   createdTime,
   guestCount,
-  username
+  username,
+  isCommented
 }) => {
   const [reviewOpen, setReviewOpen] = useState(false);
   const cancelReserveMutation = useMutation<
@@ -163,6 +176,8 @@ const ReservationCard: React.SFC<IProps> = ({
             width={"100px"}
             color={Theme.redColor}
           />
+        ) : isCommented ? (
+          <ReviewComplete>{"후기 작성 완료"}</ReviewComplete>
         ) : (
           <Button
             text={"후기 작성"}
