@@ -90,7 +90,7 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
               data &&
               data.myProfile &&
               data.myProfile.username && (
-                <Link to={`/reservation/${data.myProfile.username}`}>
+                <Link to={`/reservation`}>
                   <LinkButton text={"여행 목록"} />
                 </Link>
               )

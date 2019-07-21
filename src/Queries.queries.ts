@@ -144,12 +144,47 @@ export const MY_PROFILE = gql`
           caption
           location
         }
+        user {
+          username
+          avatar
+        }
         guestCount
         arriveAt
         leaveAt
         createdDate
         createdTime
       }
+    }
+  }
+`;
+
+export const MAKE_RESERVE = gql`
+  mutation makeReservation(
+    $postId: String!
+    $guestCount: Int!
+    $arriveAt: String!
+    $leaveAt: String!
+  ) {
+    makeReservation(
+      postId: $postId
+      guestCount: $guestCount
+      arriveAt: $arriveAt
+      leaveAt: $leaveAt
+    ) {
+      ok
+      error
+      reservation {
+        id
+      }
+    }
+  }
+`;
+
+export const CANCEL_RESERVE = gql`
+  mutation cancelReservation($id: String!) {
+    cancelReservation(id: $id) {
+      ok
+      error
     }
   }
 `;

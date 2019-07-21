@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { withRouter, RouteComponentProps, Link } from "react-router-dom";
-import { useQuery } from "react-apollo-hooks";
+import { useQuery, useMutation } from "react-apollo-hooks";
 import Loader from "src/Components/Loader";
-import { SEE_POST } from "src/Queries.queries";
-import { seeFullPost, seeFullPostVariables } from "src/types/api";
+import { SEE_POST, MAKE_RESERVE } from "src/Queries.queries";
+import {
+  seeFullPost,
+  seeFullPostVariables,
+  makeReservation,
+  makeReservationVariables
+} from "src/types/api";
 import Avatar from "src/Components/Avatar";
 import CommentList from "src/Components/CommentList";
+import Button from "src/Components/Button";
+import Theme from "src/Styles/Theme";
+import Input from "src/Components/Input";
+import useInput from "src/Hooks/useInput";
+import { toast } from "react-toastify";
 
 const ThumbNail = styled<any>("div")`
   background-position: center;
@@ -110,6 +120,51 @@ const ReviewBox = styled.div`
     display: none;
   }
 `;
+const ReserveContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+`;
+const ReserveBox = styled.div`
+  padding: 15px;
+  border: ${props => props.theme.boxBorder};
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+  div {
+    &:last-child {
+      margin-top: 13px;
+    }
+  }
+`;
+const ColumnBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+`;
+const ColumnText = styled.span`
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: ${props => props.theme.titleColor};
+`;
+const DateSelectBox = styled.div`
+  display: flex;
+  input {
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+`;
+const ExInput = styled(Input)`
+  padding: 5px;
+  &::placeholder {
+    font-size: 14px;
+  }
+`;
 
 interface IMatchParams {
   postId: string;
@@ -127,6 +182,54 @@ const Detail: React.SFC<RouteComponentProps<IMatchParams>> = ({
     }
   );
   console.log(data, loading);
+  const [isReserve, setIsReserve] = useState(false);
+  const checkIn = useInput("");
+  const checkOut = useInput("");
+  const guestCount = useInput("");
+  const reserveMutation = useMutation<
+    makeReservation,
+    makeReservationVariables
+  >(MAKE_RESERVE, {
+    variables: {
+      postId,
+      guestCount: parseInt(guestCount.valueState, 10),
+      arriveAt: checkIn.valueState,
+      leaveAt: checkOut.valueState
+    }
+  });
+  const handleToggle = (): void => {
+    if (isReserve) {
+      setIsReserve(false);
+    } else {
+      setIsReserve(true);
+    }
+  };
+  const handleReserve = async (): Promise<void> => {
+    const checkInValue = checkIn.valueState;
+    const checkOutValue = checkOut.valueState;
+    const guestCountValue = guestCount.valueState;
+    if (checkInValue === "" || checkOutValue === "" || guestCountValue === "") {
+      toast.error("입력사항을 모두 입력해주세요 🙄");
+    } else {
+      const [reserveFn, { loading: reserveLoading }] = reserveMutation;
+      try {
+        const { data: reserveData } = await reserveFn();
+        if (!reserveLoading && reserveData && reserveData.makeReservation) {
+          if (reserveData.makeReservation.ok) {
+            toast.success("예약이 완료되었습니다 😍");
+            setTimeout(() => {
+              window.location.href = "http://localhost:3000/#/reservation";
+            }, 1500);
+          } else {
+            toast.error(reserveData.makeReservation.error);
+          }
+        }
+      } catch {
+        toast.error("일시적 오류입니다 😥");
+      }
+    }
+  };
+
   if (loading) {
     return <Loader />;
   } else {
@@ -187,6 +290,54 @@ const Detail: React.SFC<RouteComponentProps<IMatchParams>> = ({
                 </ReviewBox>
               </ReviewMeta>
             </Header>
+            <ReserveContainer>
+              {isReserve ? (
+                <>
+                  <Text>예약 정보</Text>
+                  <ReserveBox>
+                    <ColumnBox>
+                      <ColumnText>날짜</ColumnText>
+                      <DateSelectBox>
+                        <ExInput
+                          width={"180px"}
+                          placeholder={"체크인(EX: 2019-07-21)"}
+                          value={checkIn.valueState}
+                          onChange={checkIn.onChange}
+                        />
+                        <ExInput
+                          width={"180px"}
+                          placeholder={"체크아웃(EX: 2019-07-23)"}
+                          value={checkOut.valueState}
+                          onChange={checkOut.onChange}
+                        />
+                      </DateSelectBox>
+                    </ColumnBox>
+                    <ColumnBox>
+                      <ColumnText>인원</ColumnText>
+                      <ExInput
+                        width={"370px"}
+                        placeholder={"인원 수(EX: 1)"}
+                        value={guestCount.valueState}
+                        onChange={guestCount.onChange}
+                      />
+                    </ColumnBox>
+                    <Button
+                      width={"370px"}
+                      color={Theme.redColor}
+                      onClick={handleReserve}
+                      text={"예약"}
+                    />
+                  </ReserveBox>
+                </>
+              ) : (
+                <Button
+                  width={"450px"}
+                  color={Theme.redColor}
+                  onClick={handleToggle}
+                  text={"예약하기"}
+                />
+              )}
+            </ReserveContainer>
           </Container>
         </>
       );

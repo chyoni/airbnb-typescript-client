@@ -22,11 +22,7 @@ const LoggedInRoutes: React.SFC<any> = () => {
       <Route exact={true} path={"/detail/:postId"} component={Detail} />
       <Route exact={true} path={"/user/:username"} component={Profile} />
       <Route exact={true} path={"/hosting"} component={Hosting} />
-      <Route
-        exact={true}
-        path={"/reservation/:username"}
-        component={ReservationList}
-      />
+      <Route exact={true} path={"/reservation"} component={ReservationList} />
     </Switch>
   );
 };

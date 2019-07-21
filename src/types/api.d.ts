@@ -223,10 +223,17 @@ export interface myProfile_myProfile_reservations_post {
   location: string;
 }
 
+export interface myProfile_myProfile_reservations_user {
+  __typename: "User";
+  username: string;
+  avatar: string | null;
+}
+
 export interface myProfile_myProfile_reservations {
   __typename: "Reservation";
   id: string;
   post: myProfile_myProfile_reservations_post;
+  user: myProfile_myProfile_reservations_user;
   guestCount: number;
   arriveAt: string;
   leaveAt: string;
@@ -248,6 +255,59 @@ export interface myProfile_myProfile {
 
 export interface myProfile {
   myProfile: myProfile_myProfile;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: makeReservation
+// ====================================================
+
+export interface makeReservation_makeReservation_reservation {
+  __typename: "Reservation";
+  id: string;
+}
+
+export interface makeReservation_makeReservation {
+  __typename: "MakeReservationResponse";
+  ok: boolean;
+  error: string | null;
+  reservation: makeReservation_makeReservation_reservation | null;
+}
+
+export interface makeReservation {
+  makeReservation: makeReservation_makeReservation;
+}
+
+export interface makeReservationVariables {
+  postId: string;
+  guestCount: number;
+  arriveAt: string;
+  leaveAt: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: cancelReservation
+// ====================================================
+
+export interface cancelReservation_cancelReservation {
+  __typename: "CancelReservationResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface cancelReservation {
+  cancelReservation: cancelReservation_cancelReservation;
+}
+
+export interface cancelReservationVariables {
+  id: string;
 }
 
 /* tslint:disable */

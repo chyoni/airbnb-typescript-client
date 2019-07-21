@@ -19,11 +19,19 @@ interface IProps {
   placeholder: string;
   value: string;
   onChange: (e: any) => void;
+  className?: any;
 }
 
-const Input: React.SFC<IProps> = ({ width, placeholder, value, onChange }) => {
+const Input: React.SFC<IProps> = ({
+  width,
+  placeholder,
+  value,
+  onChange,
+  className
+}) => {
   return (
     <Container
+      className={className}
       width={width}
       value={value}
       placeholder={placeholder}
