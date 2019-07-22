@@ -361,6 +361,33 @@ export interface addCommentVariables {
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: searchPost
+// ====================================================
+
+export interface searchPost_searchPost {
+  __typename: "Post";
+  id: string;
+  thumbNail: string;
+  caption: string;
+  location: string;
+  likeCount: number;
+}
+
+export interface searchPost {
+  searchPost: searchPost_searchPost[];
+}
+
+export interface searchPostVariables {
+  priceGte?: number | null;
+  priceLte?: number | null;
+  term: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

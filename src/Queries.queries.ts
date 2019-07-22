@@ -208,3 +208,15 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const SEARCH = gql`
+  query searchPost($priceGte: Int, $priceLte: Int, $term: String!) {
+    searchPost(priceGte: $priceGte, priceLte: $priceLte, term: $term) {
+      id
+      thumbNail
+      caption
+      location
+      likeCount
+    }
+  }
+`;

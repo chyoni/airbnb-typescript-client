@@ -19,6 +19,7 @@ interface IProps {
   placeholder: string;
   value: string;
   onChange: (e: any) => void;
+  onKeyPress?: (e: any) => void;
   className?: any;
 }
 
@@ -27,7 +28,8 @@ const Input: React.SFC<IProps> = ({
   placeholder,
   value,
   onChange,
-  className
+  className,
+  onKeyPress
 }) => {
   return (
     <Container
@@ -36,6 +38,7 @@ const Input: React.SFC<IProps> = ({
       value={value}
       placeholder={placeholder}
       onChange={onChange}
+      onKeyPress={onKeyPress}
     />
   );
 };

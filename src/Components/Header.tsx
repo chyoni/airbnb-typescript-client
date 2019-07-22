@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import styled from "styled-components";
 import Input from "./Input";
 import LinkButton from "./LinkButton";
@@ -58,10 +58,18 @@ const MetaWrapper = styled.div`
 interface IProps {
   isLoggedIn: boolean;
 }
-const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
+const Header: React.SFC<RouteComponentProps & IProps> = ({
+  history,
+  isLoggedIn
+}) => {
   const { data, loading } = useQuery<myProfile, null>(MY_PROFILE);
-  console.log(data);
   const search = useInput("");
+  const onKeyPress = e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      history.push(`/search?term=${search.valueState}`);
+    }
+  };
   if (isLoggedIn) {
     return (
       <Wrapper>
@@ -76,6 +84,7 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
               width={"500px"}
               value={search.valueState}
               onChange={search.onChange}
+              onKeyPress={onKeyPress}
               placeholder={"검색"}
             />
           </InputWrapper>
@@ -116,4 +125,4 @@ const Header: React.SFC<IProps> = ({ isLoggedIn }) => {
   }
 };
 
-export default Header;
+export default withRouter(Header);
