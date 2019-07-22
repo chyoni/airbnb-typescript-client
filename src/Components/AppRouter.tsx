@@ -7,6 +7,7 @@ import Profile from "src/Routes/Profile";
 import ReservationList from "src/Routes/ReservationList";
 import Hosting from "src/Routes/Hosting";
 import Search from "src/Routes/Search";
+import Edit from "src/Routes/Edit";
 
 interface IProps {
   isLoggedIn: boolean;
@@ -25,6 +26,7 @@ const LoggedInRoutes: React.SFC<any> = () => {
       <Route exact={true} path={"/hosting"} component={Hosting} />
       <Route exact={true} path={"/reservation"} component={ReservationList} />
       <Route exact={true} path={"/search"} component={Search} />
+      <Route exact={true} path={"/edit"} component={Edit} />
     </Switch>
   );
 };

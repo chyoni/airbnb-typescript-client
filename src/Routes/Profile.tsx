@@ -233,7 +233,6 @@ const Profile: React.SFC<RouteComponentProps<IMatchParams>> = ({
     variables: { username }
   });
 
-  console.log(data);
   if (loading) {
     return <Loader />;
   } else if (!loading && data && data.seeUser) {
@@ -269,7 +268,9 @@ const Profile: React.SFC<RouteComponentProps<IMatchParams>> = ({
               }`}</CreatedDate>
               {data.seeUser.isSelf && (
                 <SettingBox>
-                  <Setting />
+                  <Link to={"/edit"}>
+                    <Setting />
+                  </Link>
                   <Data>👈 프로필 수정</Data>
                 </SettingBox>
               )}

@@ -452,6 +452,31 @@ export interface seeUserVariables {
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL mutation operation: editUser
+// ====================================================
+
+export interface editUser_editUser {
+  __typename: "EditUserResponse";
+  ok: boolean;
+  error: string | null;
+}
+
+export interface editUser {
+  editUser: editUser_editUser;
+}
+
+export interface editUserVariables {
+  firstName?: string | null;
+  lastName?: string | null;
+  avatar?: string | null;
+  username: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

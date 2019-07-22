@@ -9,7 +9,7 @@ const useInput = (defaultValue: any) => {
     } = e;
     setValueState(value);
   };
-  return { valueState, onChange };
+  return { valueState, onChange, setValueState };
 };
 
 export default useInput;

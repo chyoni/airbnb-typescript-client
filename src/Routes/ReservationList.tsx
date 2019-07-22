@@ -22,7 +22,6 @@ const ReservationContainer = styled.div`
 const ReservationList: React.SFC = () => {
   const { data, loading } = useQuery<myProfile, null>(MY_PROFILE);
 
-  console.log(data);
   if (loading) {
     return <Loader />;
   } else {
