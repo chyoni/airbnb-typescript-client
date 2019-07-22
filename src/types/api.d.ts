@@ -388,6 +388,70 @@ export interface searchPostVariables {
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL query operation: seeUser
+// ====================================================
+
+export interface seeUser_seeUser_hostings {
+  __typename: "Post";
+  id: string;
+  thumbNail: string;
+  caption: string;
+  location: string;
+  likeCount: number;
+}
+
+export interface seeUser_seeUser_comments_user {
+  __typename: "User";
+  id: string;
+  avatar: string | null;
+  username: string;
+}
+
+export interface seeUser_seeUser_comments_post {
+  __typename: "Post";
+  id: string;
+  thumbNail: string;
+  caption: string;
+  location: string;
+}
+
+export interface seeUser_seeUser_comments {
+  __typename: "Comment";
+  id: string;
+  text: string;
+  user: seeUser_seeUser_comments_user;
+  post: seeUser_seeUser_comments_post;
+  createdDate: string | null;
+  createdTime: string | null;
+}
+
+export interface seeUser_seeUser {
+  __typename: "User";
+  id: string;
+  firstName: string;
+  lastName: string;
+  fullName: string | null;
+  avatar: string | null;
+  username: string;
+  hostings: seeUser_seeUser_hostings[];
+  isSelf: boolean;
+  createdDate: string | null;
+  comments: seeUser_seeUser_comments[];
+}
+
+export interface seeUser {
+  seeUser: seeUser_seeUser;
+}
+
+export interface seeUserVariables {
+  username: string;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

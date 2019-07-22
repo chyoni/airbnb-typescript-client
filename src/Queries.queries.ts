@@ -220,3 +220,42 @@ export const SEARCH = gql`
     }
   }
 `;
+
+export const SEE_USER = gql`
+  query seeUser($username: String!) {
+    seeUser(username: $username) {
+      id
+      firstName
+      lastName
+      fullName
+      avatar
+      username
+      hostings {
+        id
+        thumbNail
+        caption
+        location
+        likeCount
+      }
+      isSelf
+      createdDate
+      comments {
+        id
+        text
+        user {
+          id
+          avatar
+          username
+        }
+        post {
+          id
+          thumbNail
+          caption
+          location
+        }
+        createdDate
+        createdTime
+      }
+    }
+  }
+`;

@@ -14,6 +14,7 @@ export default createGlobalStyle`
     * {
         box-sizing: border-box;
         font-family: 'Titillium Web', sans-serif;
+        user-select: none;
     }
     body {
         font-family: 'Titillium Web', sans-serif;
