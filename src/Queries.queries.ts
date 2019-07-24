@@ -278,3 +278,31 @@ export const EDIT = gql`
     }
   }
 `;
+
+export const HOSTING = gql`
+  mutation hostingPost(
+    $thumbNail: String!
+    $caption: String!
+    $location: String!
+    $maxPeopleCount: Int!
+    $checkIn: String!
+    $checkOut: String!
+    $price: Int!
+  ) {
+    hostingPost(
+      thumbNail: $thumbNail
+      caption: $caption
+      location: $location
+      maxPeopleCount: $maxPeopleCount
+      checkIn: $checkIn
+      checkOut: $checkOut
+      price: $price
+    ) {
+      ok
+      error
+      post {
+        id
+      }
+    }
+  }
+`;

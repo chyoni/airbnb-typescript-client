@@ -477,6 +477,40 @@ export interface editUserVariables {
 /* eslint-disable */
 // This file was automatically generated and should not be edited.
 
+// ====================================================
+// GraphQL mutation operation: hostingPost
+// ====================================================
+
+export interface hostingPost_hostingPost_post {
+  __typename: "Post";
+  id: string;
+}
+
+export interface hostingPost_hostingPost {
+  __typename: "HostingPostResponse";
+  ok: boolean;
+  error: string | null;
+  post: hostingPost_hostingPost_post | null;
+}
+
+export interface hostingPost {
+  hostingPost: hostingPost_hostingPost;
+}
+
+export interface hostingPostVariables {
+  thumbNail: string;
+  caption: string;
+  location: string;
+  maxPeopleCount: number;
+  checkIn: string;
+  checkOut: string;
+  price: number;
+}
+
+/* tslint:disable */
+/* eslint-disable */
+// This file was automatically generated and should not be edited.
+
 //==============================================================
 // START Enums and Input Objects
 //==============================================================

@@ -7,7 +7,7 @@ import TextareaAutosize from "react-autosize-textarea";
 import Loader from "src/Components/Loader";
 import { API_KEY } from "src/secret";
 import axios from "axios";
-import PhotoInput from "src/Components/PhotoInput";
+import ProfileImageInput from "src/Components/ProfileImageInput";
 import Theme from "src/Styles/Theme";
 import useInput from "src/Hooks/useInput";
 import { toast } from "react-toastify";
@@ -91,6 +91,7 @@ const Edit: React.SFC = () => {
   const firstName = useInput("");
   const lastName = useInput("");
   const editMutation = useMutation<editUser, editUserVariables>(EDIT);
+
   const onPhotoChange: React.ChangeEventHandler<HTMLInputElement> = async e => {
     const {
       target: { files }
@@ -114,6 +115,7 @@ const Edit: React.SFC = () => {
       }
     }
   };
+
   const onClickEdit = async () => {
     const firstNameValue = firstName.valueState;
     const lastNameValue = lastName.valueState;
@@ -184,7 +186,6 @@ const Edit: React.SFC = () => {
       lastName.setValueState(data.myProfile.lastName);
     }
   }, [data]);
-  console.log(data);
   if (loading) {
     return <Loader />;
   } else if (!loading && data && data.myProfile) {
@@ -192,7 +193,7 @@ const Edit: React.SFC = () => {
       <EditContainer>
         <EditBox>
           <AvatarField>
-            <PhotoInput
+            <ProfileImageInput
               fileUrl={profilePhoto}
               uploading={uploading}
               onChange={onPhotoChange}
